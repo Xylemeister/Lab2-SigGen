@@ -1,7 +1,8 @@
 module counter #(
-    parameter WIDTH = 8
+    parameter WIDTH = 9
 )(
-    input logic clk, en, rst,
+    input logic clk,
+    input logic rst,
     input logic [WIDTH-1:0] incr,
     output logic [WIDTH-1:0] count1,
     output logic [WIDTH-1:0] count2
@@ -15,7 +16,9 @@ always_ff @(posedge clk )
     end
     else
     begin 
-    count1 <= en ?  count1 + 4'b1000: count1;
-    count2 <= en ?  count1 + 1 - incr: count2;
+    count1 <=  count1 + 1;
+    count2 <=  count1 + 1 - incr;
     end
+
+
 endmodule
